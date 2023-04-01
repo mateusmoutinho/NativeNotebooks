@@ -12,14 +12,11 @@ def main():
         print('Creating new project')
         path = dirname(abspath(__file__))
         templates = f'{path}/template'
+        current_dir = get_current_dir() + '/'
         tree = create_tree_from_hardware(templates)
         for file in tree:
-            dir = file.path.get_dir()
-            new_path = dir.replace('template', get_current_dir())
-            
-            file.path.set_dir(new_path)
+            file.path.set_dir(current_dir)
             file.hardware_write()
-            print(file)
-        #hardware_commit_tree(tree)
+        
+        hardware_commit_tree(tree)
         return 
-main()
