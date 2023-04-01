@@ -1,3 +1,4 @@
-from NativeNotebooks.exec import *
+from os import system
+from NativeNotebooks.copile_project import copile_project
 
-main()
+copile_project('teste/', 'python', '_', '$')
