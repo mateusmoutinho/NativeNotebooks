@@ -20,7 +20,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'NativeNotebooks=NativeNotebooks.main:main'
+            'notebook=NativeNotebooks.main:main'
         ]
     },
 
