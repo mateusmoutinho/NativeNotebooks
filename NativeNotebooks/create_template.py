@@ -40,40 +40,40 @@ def create_template():
     informations = get_informations()
 
     path = dirname(abspath(__file__))
-    templates_path = join(path,'templates')
 
-    tree = []
-    config_path = join(templates_path,'config')
-    config_tree = create_tree_from_hardware(config_path)
+    hole_tree = load_json_tree(join(path,'templates.json'))
+    config_tree = []
+    notebooks_tree = []
+    for h in hole_tree:
+        path = h.path.get_path()
+        if 'config' in path:
+            config_tree.append(h)
+        if  f'notebooks/{informations["$mainLang$"]}' in path:
+            notebooks_tree.append(h)
+        
+    
+    out_tree = []
 
     code_dir = informations['$code-dir$']
     if not code_dir:
         code_dir =get_current_dir() 
     
-    for c in config_tree:
-  
-        c_path = c.path.get_path()
-        new_cdir_path = c_path.replace(config_path ,'')
-        concated_path =  code_dir  + new_cdir_path
-        c.path.set_path(concated_path)
-        if c.in_memory():
-            content = c.get_content()
-            for key,value in informations.items():
-                content  = content.replace(key,value)
-            c.set_content(content)    
-
-        c.hardware_write()
-        tree.append(c)
-
-    #ading notebooks
-    notebooks_path = join(templates_path,'notebooks')
     
-    lang_path = join(notebooks_path,informations['$mainLang$'])
-    notebooks_tree = create_tree_from_hardware(lang_path)
+    for c in config_tree:
+        c_path = c.path.get_path()
+        concated_path =  code_dir  + '/' + c_path
+        c.path.set_path(concated_path)
+        content = c.get_content()
+        for key,value in informations.items():
+            content  = content.replace(key,value)
+        c.set_content(content)    
+        c.hardware_write()
+        out_tree.append(c)
+        
+    
     for c in notebooks_tree:
         c_path = c.path.get_path()
-        new_cdir_path = c_path.replace(lang_path ,'')
-        concated_path =  code_dir  + new_cdir_path
+        concated_path =  code_dir + '/' + c_path
         c.path.set_path(concated_path)
         if c.in_memory():
             content = c.get_content()
@@ -82,14 +82,15 @@ def create_template():
             c.set_content(content)    
 
         c.hardware_write()
-        tree.append(c)
-    
-    report = create_transaction_report(tree)
+        out_tree.append(c)
+
+
+    report = create_transaction_report(out_tree)
     print('The following files will be created')
     report.represent()
     write = input('Do you want to continue? (y/n): ')
     if write == 'y':
-        hardware_commit_tree(tree)
+        hardware_commit_tree(out_tree)
         print('Done')
     else:
         print('Aborted')
