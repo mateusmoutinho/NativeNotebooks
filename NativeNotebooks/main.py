@@ -17,6 +17,6 @@ def main():
         for file in tree:
             file.path.set_dir(current_dir)
             file.hardware_write()
-        
+            print(file)
         hardware_commit_tree(tree)
         return 
