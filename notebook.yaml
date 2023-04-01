@@ -1,4 +1,4 @@
 
-main_lang: python 
+main-lang: python 
 start-flag: _
 out-dir: $
