@@ -15,10 +15,11 @@ def main():
         tree = create_tree_from_hardware(templates)
         for file in tree:
             dir = file.path.get_dir()
-            new_path = dir.replace('template', '')
+            new_path = dir.replace('template', get_current_dir())
             
             file.path.set_dir(new_path)
             file.hardware_write()
-        hardware_commit_tree(tree)
+            print(file)
+        #hardware_commit_tree(tree)
         return 
 main()
