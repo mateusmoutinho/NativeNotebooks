@@ -26,7 +26,6 @@ def main():
         try:
             lang = PySchemaKey.treat_and_get_str(notebook,'main-lang')
             start_flag = PySchemaKey.treat_and_get_str(notebook,'start-flag')
-            out_dir = PySchemaKey.treat_and_get_str(notebook,'out-dir')
         except PySchemaKey.PySchemaException as e:
             print('Error in notebook.yaml file')
             print(e)
@@ -34,8 +33,7 @@ def main():
         copile_project(
             get_current_dir(),
             lang,
-            start_flag,
-            out_dir
+            start_flag
         )
     else:
         print('Command not found')

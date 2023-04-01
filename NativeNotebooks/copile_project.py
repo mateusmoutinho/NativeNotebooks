@@ -11,7 +11,7 @@ def copile_file(file_content:str,lang:str)->set:
             formated += "\n"+code
     return formated
 
-def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
+def copile_project(current_dir:str, lang:str,start_flag:str):
     
 
     all  = create_tree_from_hardware(
@@ -19,10 +19,7 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
         load_content=False,
         preserve_content=False
     )
-    
-
-    formated_tree = []    
- 
+  
     #print("current dir is",current_dir)
 
     for file in all:
@@ -40,13 +37,12 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             file.hardware_write()
            
    
-        formated_tree.append(file)
-    
+      
     if 'debug' in argv:
-        t = create_transaction_report(formated_tree)
+        t = create_transaction_report(all)
         t.represent()
         procede = input("procede? (y/n)")
         if procede == 'y':
-            hardware_commit_tree(formated_tree)
+            hardware_commit_tree(all)
     else:
-        hardware_commit_tree(formated_tree)
+        hardware_commit_tree(all)

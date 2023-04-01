@@ -16,13 +16,9 @@ def get_informations():
     except KeyError:
         extension = input('Inform extension: ')
         extension = extension.replace('.','')
-    out_dir = input('Inform out dir (type enter for current): ')
-    
+
     code_dir = input('Inform code dir (type enter for current): ')
 
-    if not out_dir:
-        out_dir = '.'
-        
     flag_start = input('Inform flag start (type enter for _): ')
     if not flag_start:
         flag_start = '_'
@@ -30,8 +26,7 @@ def get_informations():
         '$code-dir$':code_dir,
         '$flag-start$':flag_start,
         '$mainLang$':main_lang,
-        '$extension$':extension,
-        '$out-dir$':out_dir
+        '$extension$':extension
     }
 
 def create_template():
