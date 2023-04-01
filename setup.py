@@ -6,6 +6,7 @@ setup(
     version='1.0',
     packages=[
         'NativeNotebooks',
+        'NativeNotebooks.template',
     ],
     include_package_data=True,
     package_data={
