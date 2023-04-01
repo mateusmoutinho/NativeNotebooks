@@ -14,7 +14,6 @@ def copile_file(file_content:str,lang:str)->set:
 def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
     all  = create_tree_from_hardware(current_dir,load_content=False,preserve_content=False)
 
-    formated_tree = []
     for file in all:
         dir = file.path.get_dir()
         extension = file.path.get_extension()
@@ -23,5 +22,13 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             result = copile_file(file.get_content(),lang)
             file.set_content(result)
             file.path.set_extension('py')
-            
+            name = file.path.get_name()
+            file.path.set_name(start_flag+name)
+            file.hardware_write()
+        if out_dir !='.':
+            file.path.set_dir(out_dir)
+            file.hardware_write()
+    
+    t = create_transaction_report(all)
+    t.represent()
 

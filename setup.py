@@ -13,7 +13,6 @@ setup(
         'NativeNotebooks.templates': ['*']
     },
     install_requires=[
-        'cli-args-system==1.3',
         'PyDoTheWorld @git+https://github.com/OUIsolutions/PyDoTheWorld.git',
         'PySchemaKey @git+https://github.com/OUIsolutions/PySchemaKey',
         'pyyaml',

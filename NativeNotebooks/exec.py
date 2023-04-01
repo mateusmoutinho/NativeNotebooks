@@ -10,9 +10,9 @@ def main():
     if 'new' in argv:
         create_template()
         return 
-    '''
-    copile = args.flags_content('copile')
-    if copile.exist():
+    
+    
+    if 'compile' in argv:
         notebook_content = load_any_content('notebook.yaml')
         if not notebook_content:
             notebook_content = yaml.dump({
@@ -21,8 +21,7 @@ def main():
                 'out-dir':'$'
             })
             write_any_content('notebook.yaml',notebook_content)
-        
-
+    
         notebook = yaml.load(notebook_content, Loader=yaml.FullLoader)
         try:
             lang = PySchemaKey.treat_and_get_str(notebook,'main-lang')
@@ -33,4 +32,4 @@ def main():
             print(e)
             return 
         copile_project(lang,start_flag,out_dir)
-    '''
+    
