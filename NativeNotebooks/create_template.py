@@ -63,10 +63,12 @@ def create_template():
         new_cdir_path = c_path.replace(config_path ,'')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
-        content = c.get_content()
-        for key,value in informations.items():
-            content  = content.replace(key,value)
-            
+        if c.in_memory():
+            content = c.get_content()
+            for key,value in informations.items():
+                content  = content.replace(key,value)
+            c.set_content(content)    
+
         c.hardware_write()
         tree.append(c)
 
