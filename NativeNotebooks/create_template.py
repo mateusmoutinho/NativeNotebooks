@@ -37,7 +37,12 @@ def create_template():
     print('Creating new project')
 
     #informations = get_informations()
-    informations = {'$code-dir$': '', '$flag-start$': '_', '$mainLang$': 'python', '$extension$': 'py', '$out-dir$': '.'}
+    informations = {
+        '$code-dir$': '',
+        '$flag-start$': '_', 
+        '$mainLang$': 'python', 
+        '$extension$': 'py', 
+        '$out-dir$': '.'}
  
 
     path = dirname(abspath(__file__))
@@ -49,19 +54,17 @@ def create_template():
 
     code_dir = informations['$code-dir$']
     if not code_dir:
-        code_dir =get_current_dir()
-    i = 0
+        code_dir =get_current_dir() + '/'
+   
     for c in config_tree:
-        i+=1
+      
         c_path = c.path.get_path()
-        new_cdir_path = c_path.replace(config_path + '/','')
+        new_cdir_path = c_path.replace(config_path ,'')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
-        c.set_content("anada")
-        try:
-            
-            
-            c.hardware_write(False)
-        except:
-            print('Error on write file: ',c.path.get_path())
-    
+        print(c)
+        c.hardware_write()
+        tree.append(c)
+
+
+    hardware_commit_tree(tree)
