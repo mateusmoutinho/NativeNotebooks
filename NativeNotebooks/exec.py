@@ -38,3 +38,6 @@ def main():
     else:
         print('Command not found')
         print('Commands: new, copile')
+
+if __name__ == '__main__':
+    main()

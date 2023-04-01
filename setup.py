@@ -27,3 +27,5 @@ setup(
 
     description=''
 )
+
+#python3 -m NativeNotebooks.exec
