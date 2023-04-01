@@ -29,6 +29,4 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             file.path.set_dir(out_dir)
             file.hardware_write()
     
-    t = create_transaction_report(all)
-    t.represent()
-
+    hardware_commit_tree(all)
