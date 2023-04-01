@@ -1,4 +1,4 @@
 
-main_lang: $mainLang$ 
+main-lang: $mainLang$ 
 start-flag: $flag-start$
 out-dir: $out-dir$

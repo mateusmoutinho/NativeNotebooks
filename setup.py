@@ -10,7 +10,7 @@ setup(
     ],
     include_package_data=True,
     package_data={
-        'NativeNotebooks': ['*']
+        'NativeNotebooks': ['templates.json']
     },
     install_requires=[
         'PyDoTheWorld @git+https://github.com/OUIsolutions/PyDoTheWorld.git',

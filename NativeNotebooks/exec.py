@@ -12,7 +12,7 @@ def main():
         return 
     
     
-    if 'compile' in argv:
+    elif 'copile' in argv:
         notebook_content = load_any_content('notebook.yaml')
         if not notebook_content:
             notebook_content = yaml.dump({
@@ -31,5 +31,12 @@ def main():
             print('Error in notebook.yaml file')
             print(e)
             return 
-        copile_project(lang,start_flag,out_dir)
-    
+        copile_project(
+            get_current_dir(),
+            lang,
+            start_flag,
+            out_dir
+        )
+    else:
+        print('Command not found')
+        print('Commands: new, copile')
