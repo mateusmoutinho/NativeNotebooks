@@ -15,6 +15,7 @@ def get_informations():
         extension = loaded_languages[main_lang]
     except KeyError:
         extension = input('Inform extension: ')
+        extension = extension.replace('.','')
     out_dir = input('Inform out dir (type enter for current): ')
     
     code_dir = input('Inform code dir (type enter for current): ')
@@ -62,8 +63,10 @@ def create_template():
         new_cdir_path = c_path.replace(config_path ,'')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
-       
-        
+        content = c.get_content()
+        for key,value in informations.items():
+            content  = content.replace(key,value)
+            
         c.hardware_write()
         tree.append(c)
 
