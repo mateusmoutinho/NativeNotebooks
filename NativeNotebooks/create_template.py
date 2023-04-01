@@ -53,10 +53,12 @@ def create_template():
 
     for c in config_tree:
         c_path = c.path.get_path()
-        new_cdir_path = c_path.replace(config_path,'')
+        new_cdir_path = c_path.replace(config_path + '/','')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
-        c.hardware_write()
-        
-    tree.extend(config_tree)
-    hardware_commit_tree(tree)    
+        try:
+            print(c)
+            #c.hardware_write(False)
+        except:
+            print('Error on write file: ',c.path.get_path())
+    
