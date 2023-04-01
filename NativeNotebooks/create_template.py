@@ -55,16 +55,18 @@ def create_template():
     code_dir = informations['$code-dir$']
     if not code_dir:
         code_dir =get_current_dir() + '/'
-   
+    i =0 
     for c in config_tree:
-      
+        i+=1
         c_path = c.path.get_path()
         new_cdir_path = c_path.replace(config_path ,'')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
-        print(c)
-        c.hardware_write()
+       
+        if i == 2:
+            print(c)
+            c.hardware_write(False)
         tree.append(c)
 
 
-    hardware_commit_tree(tree)
+    #hardware_commit_tree(tree)
