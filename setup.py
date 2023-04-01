@@ -1,10 +1,12 @@
 from platform import system as platform
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='NativeNotebooks',
     version='1.0',
-    packages=find_packages(),
+    packages=[
+        'NativeNotebooks',
+    ],
     include_package_data=True,
     package_data={
         'PyDoTheWorld.template': ['*']
