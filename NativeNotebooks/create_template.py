@@ -37,14 +37,7 @@ def get_informations():
 def create_template():
     print('Creating new project')
 
-    #informations = get_informations()
-    informations = {
-        '$code-dir$': '',
-        '$flag-start$': '_', 
-        '$mainLang$': 'python', 
-        '$extension$': 'py', 
-        '$out-dir$': '.'}
- 
+    informations = get_informations()
 
     path = dirname(abspath(__file__))
     templates_path = join(path,'templates')
