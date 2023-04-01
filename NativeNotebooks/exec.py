@@ -19,13 +19,20 @@ def main():
     if copile.exist():
         notebook_content = load_any_content('notebook.yaml')
         if not notebook_content:
-            print('No notebook.yaml file found')
-            return
+            default = {
+                'main-lang':'python',
+                'start-flag':'_',
+                'out-dir':'$'
+            }
+            notebook_content = yaml.dump(default)
+            write_any_content('notebook.yaml',notebook_content)
+        
+        
         notebook = yaml.load(notebook_content, Loader=yaml.FullLoader)
         try:
-            lang = PySchemaKey.treat_and_get_str(notebook,'main-lang')
-            start_flag = PySchemaKey.treat_and_get_str(notebook,'start-flag')
-            out_dir = PySchemaKey.treat_and_get_str(notebook,'out-dir')
+            lang = PySchemaKey.treat_and_get_str(notebook,'main-lang',default='python')
+            start_flag = PySchemaKey.treat_and_get_str(notebook,'start-flag',default='_')
+            out_dir = PySchemaKey.treat_and_get_str(notebook,'out-dir',default='$')
         except PySchemaKey.PySchemaException as e:
             print('Error in notebook.yaml file')
             print(e)
