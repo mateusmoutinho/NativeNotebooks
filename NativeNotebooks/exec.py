@@ -1,6 +1,7 @@
 from PyDoTheWorld import * 
 from cli_args_system import *
-from NativeNotebooks.create_template import *
+from NativeNotebooks.create_template import create_template
+from NativeNotebooks.copile_project import copile_project
 import  PySchemaKey
 import yaml
 
@@ -26,5 +27,7 @@ def main():
             start_flag = PySchemaKey.treat_and_get_str(notebook,'start-flag')
             out_dir = PySchemaKey.treat_and_get_str(notebook,'out-dir')
         except PySchemaKey.PySchemaException as e:
+            print('Error in notebook.yaml file')
             print(e)
-            return
+            return 
+        copile_project(lang,start_flag,out_dir)
