@@ -1,6 +1,8 @@
 from PyDoTheWorld import * 
 from cli_args_system import *
 from NativeNotebooks.create_template import *
+
+
 def main():
     args = Args()
     
@@ -11,4 +13,8 @@ def main():
         create_template(new_project)
         return 
 
+    copile = args.flags_content('copile')
+    if copile.exist():
+        
+        pass
     

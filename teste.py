@@ -1,3 +1,3 @@
-from NativeNotebooks.main import *
+from NativeNotebooks.exec import *
 
 main()

@@ -20,4 +20,4 @@ def create_template(new_project:FlagsContent):
         file.path.set_dir(current_dir)
         file.hardware_write()
         
-        hardware_commit_tree(tree)
+    hardware_commit_tree(tree)
