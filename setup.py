@@ -17,9 +17,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'notebook = NativeNotebooks.main:main'
+            'NativeNotebooks=NativeNotebooks.main:main'
         ]
     },
+
     url='https://github.com/mateusmoutinho/NativeNotebooks',
     license='MIT',
 
