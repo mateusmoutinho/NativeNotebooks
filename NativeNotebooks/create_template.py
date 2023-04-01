@@ -84,5 +84,13 @@ def create_template():
         c.hardware_write()
         tree.append(c)
     
-
-    hardware_commit_tree(tree)
+    report = create_transaction_report(tree)
+    print('The following files will be created')
+    report.represent()
+    write = input('Do you want to continue? (y/n): ')
+    if write == 'y':
+        hardware_commit_tree(tree)
+        print('Done')
+    else:
+        print('Aborted')
+    
