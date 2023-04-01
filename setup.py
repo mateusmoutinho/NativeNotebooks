@@ -6,11 +6,11 @@ setup(
     version='1.0',
     packages=[
         'NativeNotebooks',
-        'NativeNotebooks.template',
+        'NativeNotebooks.templates',
     ],
     include_package_data=True,
     package_data={
-        'NativeNotebooks.template': ['*']
+        'NativeNotebooks.templates': ['*']
     },
     install_requires=[
         'cli-args-system==1.3',
