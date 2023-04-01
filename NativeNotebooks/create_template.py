@@ -57,10 +57,11 @@ def create_template():
         new_cdir_path = c_path.replace(config_path + '/','')
         concated_path =  code_dir  + new_cdir_path
         c.path.set_path(concated_path)
+        c.set_content("anada")
         try:
-            if i == 2:
-                print(c.get_content())
-                c.hardware_write(False)
+            
+            
+            c.hardware_write(False)
         except:
             print('Error on write file: ',c.path.get_path())
     
