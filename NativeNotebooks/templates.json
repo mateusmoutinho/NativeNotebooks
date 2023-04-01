@@ -1,0 +1,25 @@
+[{
+		"path":	"config/notebook.yaml",
+		"content_size":	68,
+		"content_sha256":	"69ec69a5fe92067291bd80faf5a3848dde496ac4051a2270c7bec4b0a156256c",
+		"is_binary":	false,
+		"content":	"\nmain_lang: $mainLang$ \nstart-flag: $flag-start$\nout-dir: $out-dir$\n"
+	}, {
+		"path":	"notebooks/python/main.ipynb",
+		"content_size":	593,
+		"content_sha256":	"7524f11376c67c39ec4b5339881fd2f0d3de34aa9f1fc94936ec350e0f88d824",
+		"is_binary":	false,
+		"content":	"{\n \"cells\": [\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": null,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"from $flag-start$module import *\"\n   ]\n  }\n ],\n \"metadata\": {\n  \"kernelspec\": {\n   \"display_name\": \"Python 3\",\n   \"language\": \"python\",\n   \"name\": \"python3\"\n  },\n  \"language_info\": {\n   \"name\": \"python\",\n   \"version\": \"3.8.10 (default, Nov 14 2022, 12:59:47) \\n[GCC 9.4.0]\"\n  },\n  \"orig_nbformat\": 4,\n  \"vscode\": {\n   \"interpreter\": {\n    \"hash\": \"916dbcbb3f70747c44a77c7bcd40155683ae19c65e1c03b4aa3499c5328201f1\"\n   }\n  }\n },\n \"nbformat\": 4,\n \"nbformat_minor\": 2\n}\n"
+	}, {
+		"path":	"notebooks/python/module.ipynb",
+		"content_size":	765,
+		"content_sha256":	"01246bc266d744b3c224aaccc9492a10e8d7315ebc735cf9ba71d17f099e1503",
+		"is_binary":	false,
+		"content":	"{\n \"cells\": [\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": null,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"def add(x,y):\\n\",\n    \"    return x + y\"\n   ]\n  },\n  {\n   \"cell_type\": \"code\",\n   \"execution_count\": null,\n   \"metadata\": {},\n   \"outputs\": [],\n   \"source\": [\n    \"def subb(x,y):\\n\",\n    \"    return x - y\"\n   ]\n  }\n ],\n \"metadata\": {\n  \"kernelspec\": {\n   \"display_name\": \"Python 3\",\n   \"language\": \"python\",\n   \"name\": \"python3\"\n  },\n  \"language_info\": {\n   \"name\": \"python\",\n   \"version\": \"3.8.10 (default, Nov 14 2022, 12:59:47) \\n[GCC 9.4.0]\"\n  },\n  \"orig_nbformat\": 4,\n  \"vscode\": {\n   \"interpreter\": {\n    \"hash\": \"916dbcbb3f70747c44a77c7bcd40155683ae19c65e1c03b4aa3499c5328201f1\"\n   }\n  }\n },\n \"nbformat\": 4,\n \"nbformat_minor\": 2\n}\n"
+	}, {
+		"path":	"config/.vscode/settings.json",
+		"content_size":	74,
+		"content_sha256":	"59247e5a590098e97727e22b75d74260725f0389fe66be1f7e513c699db8c461",
+		"is_binary":	false,
+		"content":	"{\n    \"files.exclude\": {\n        \"$flag-start$*.$extension$\": true\n    }\n}"
+	}]
