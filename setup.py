@@ -10,7 +10,7 @@ setup(
     ],
     include_package_data=True,
     package_data={
-        'PyDoTheWorld.template': ['*']
+        'NativeNotebooks.template': ['*']
     },
     install_requires=[
         'cli-args-system==1.3',
