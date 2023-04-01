@@ -2,7 +2,7 @@ from PyDoTheWorld import *
 
 from NativeNotebooks.create_template import create_template
 from NativeNotebooks.copile_project import copile_project
-import  PySchemaKey
+
 import yaml
 from sys import argv
 def main():
@@ -24,11 +24,11 @@ def main():
     
         notebook = yaml.load(notebook_content, Loader=yaml.FullLoader)
         try:
-            lang = PySchemaKey.treat_and_get_str(notebook,'main-lang')
-            start_flag = PySchemaKey.treat_and_get_str(notebook,'start-flag')
-        except PySchemaKey.PySchemaException as e:
+            lang =notebook['main-lang']
+            start_flag = notebook['start-flag']
+        except KeyError as e:
             print('Error in notebook.yaml file')
-            print(e)
+            print('Missing key:',e)
             return 
         copile_project(
             get_current_dir(),

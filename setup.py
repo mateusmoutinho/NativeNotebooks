@@ -14,7 +14,6 @@ setup(
     },
     install_requires=[
         'PyDoTheWorld @git+https://github.com/OUIsolutions/PyDoTheWorld.git',
-        'PySchemaKey @git+https://github.com/OUIsolutions/PySchemaKey',
         'pyyaml',
     ],
     entry_points={
