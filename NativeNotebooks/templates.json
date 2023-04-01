@@ -1,9 +1,9 @@
 [{
 		"path":	"config/notebook.yaml",
 		"content_size":	68,
-		"content_sha256":	"69ec69a5fe92067291bd80faf5a3848dde496ac4051a2270c7bec4b0a156256c",
+		"content_sha256":	"4f96ff9a3ab3414424b05bc9b4528ae22fc5403f59daae6000e716bdc13e4443",
 		"is_binary":	false,
-		"content":	"\nmain_lang: $mainLang$ \nstart-flag: $flag-start$\nout-dir: $out-dir$\n"
+		"content":	"\nmain-lang: $mainLang$ \nstart-flag: $flag-start$\nout-dir: $out-dir$\n"
 	}, {
 		"path":	"notebooks/python/main.ipynb",
 		"content_size":	593,
