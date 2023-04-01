@@ -42,15 +42,7 @@ def create_template():
     path = dirname(abspath(__file__))
 
     hole_tree = load_json_tree(join(path,'templates.json'))
-    config_tree = []
-    notebooks_tree = []
-    for h in hole_tree:
-        path = h.path.get_path()
-        if 'config' in path:
-            config_tree.append(h)
-        if  f'notebooks/{informations["$mainLang$"]}' in path:
-            notebooks_tree.append(h)
-        
+
     
     out_tree = []
 
@@ -59,9 +51,12 @@ def create_template():
         code_dir =get_current_dir() 
     
     
-    for c in config_tree:
+    for c in hole_tree:
+    
         c_path = c.path.get_path()
-        concated_path =  code_dir  + '/' + c_path
+        if 'config/'not in c_path:
+            continue 
+        concated_path = c_path.replace('config/',code_dir + '/')
         c.path.set_path(concated_path)
         content = c.get_content()
         for key,value in informations.items():
@@ -71,9 +66,15 @@ def create_template():
         out_tree.append(c)
         
     
-    for c in notebooks_tree:
+    for c in hole_tree:
         c_path = c.path.get_path()
-        concated_path =  code_dir + '/' + c_path
+        if f'notebooks/{informations["$mainLang$"]}' not in c_path:
+            continue
+
+        concated_path = c_path.replace(
+            f'notebooks/{informations["$mainLang$"]}',
+            code_dir + '/'
+        )
         c.path.set_path(concated_path)
         if c.in_memory():
             content = c.get_content()
@@ -84,7 +85,7 @@ def create_template():
         c.hardware_write()
         out_tree.append(c)
 
-
+    
     report = create_transaction_report(out_tree)
     print('The following files will be created')
     report.represent()
