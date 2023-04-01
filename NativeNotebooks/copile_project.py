@@ -20,23 +20,15 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
         preserve_content=False
     )
     
-    formated_tree = []
 
-    if out_dir !='.':
-        tree_to_remove = create_tree_from_hardware(
-            out_dir,
-            load_content=False,
-            preserve_content=False
-        )
-        for file in tree_to_remove:
-            file.hardware_remove()
-            formated_tree.append(file)
-
+    formated_tree = []    
+ 
     #print("current dir is",current_dir)
 
     for file in all:
         
         extension = file.path.get_extension()
+        
         if extension == 'ipynb':
             file.load_content_from_hardware()
             result = copile_file(file.get_content(),lang)
@@ -47,28 +39,7 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             file.path.set_name(start_flag+name)
             file.hardware_write()
            
-                    
-        if out_dir !='.':
-            
-            file.load_content_from_hardware()
-            origina_path = file.path.get_path()
-            
-
-
-            path = origina_path.replace(current_dir,out_dir +'/')
-            file.path.set_path(path)
-      
-
-            if out_dir in origina_path:
-                continue    
-
-            if 'notebook.yaml' in path:
-                continue
-            if '.vscode' in path:
-                continue
-            
-            file.hardware_write()
-        
+   
         formated_tree.append(file)
     
     if 'debug' in argv:
