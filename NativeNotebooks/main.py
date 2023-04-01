@@ -9,6 +9,7 @@ def main():
     
 
     if new_project.exist():
+        print('Creating new project')
         path = dirname(abspath(__file__))
         templates = f'{path}/template'
         tree = create_tree_from_hardware(templates)
