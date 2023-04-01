@@ -15,9 +15,9 @@ def create_template(new_project:FlagsContent):
         name = new_project._args[0]
         current_dir = name
         
-        tree = create_tree_from_hardware(templates)
-        for file in tree:
-            file.path.set_dir(current_dir)
-            file.hardware_write()
-            
+    tree = create_tree_from_hardware(templates)
+    for file in tree:
+        file.path.set_dir(current_dir)
+        file.hardware_write()
+        
         hardware_commit_tree(tree)
