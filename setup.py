@@ -1,13 +1,11 @@
 from platform import system as platform
-from setuptools import setup
+from setuptools import setup ,find_packages
 
 setup(
     name='NativeNotebooks',
     version='1.0',
-    packages=[
-        'NativeNotebooks',
-        'NativeNotebooks.templates',
-    ],
+    #find and include all packages
+    packages=find_packages('NativeNotebooks'),
     include_package_data=True,
     package_data={
         'NativeNotebooks.templates': ['*']
