@@ -1,6 +1,6 @@
 import json 
 from PyDoTheWorld import * 
-
+from sys import argv
 def copile_file(file_content:str,lang:str)->set:
     formated = ''
     file_loaded = json.loads(file_content)
@@ -33,6 +33,7 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             formated_tree.append(file)
 
     #print("current dir is",current_dir)
+
     for file in all:
         
         extension = file.path.get_extension()
@@ -42,6 +43,7 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             file.set_content(result)
             file.path.set_extension('py')
             name = file.path.get_name()
+    
             file.path.set_name(start_flag+name)
             file.hardware_write()
            
@@ -56,8 +58,10 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
             path = origina_path.replace(current_dir,out_dir +'/')
             file.path.set_path(path)
       
+
             if out_dir in origina_path:
                 continue    
+
             if 'notebook.yaml' in path:
                 continue
             if '.vscode' in path:
@@ -67,9 +71,11 @@ def copile_project(current_dir:str, lang:str,start_flag:str,out_dir:str):
         
         formated_tree.append(file)
     
-
-    t = create_transaction_report(formated_tree)
-    t.represent()
-    procede = input("procede? (y/n)")
-    if procede == 'y':
-        hardware_commit_tree(all)
+    if 'debug' in argv:
+        t = create_transaction_report(formated_tree)
+        t.represent()
+        procede = input("procede? (y/n)")
+        if procede == 'y':
+            hardware_commit_tree(formated_tree)
+    else:
+        hardware_commit_tree(formated_tree)
